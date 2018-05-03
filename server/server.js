@@ -34,7 +34,15 @@ var shoes = [{
 
 
 app.get('/shoe', (req, res) => {
-    res.send(shoes);
+    pool.query(`SELECT * FROM "shoes" `)
+    .then((results) => {
+        console.log(results.rows)
+        res.send(results.rows);
+    })
+    .catch((error) => {
+        console.log('error with get shoe');
+        res.sendStatus(500);
+    });
 });
 
 app.post('/shoe', (req, res) => {

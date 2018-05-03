@@ -1,17 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="vendors/angular.js"></script>
     <script src="vendors/angular.min.js"></script>
     <script src="scripts/client.js"></script>
     <script src="scripts/controller/shoe.controller.js"></script>
     <script src="scripts/services/shoe.service.js"></script>
     <title>PG - Shoe Store</title>
 </head>
-<body ng-app='ShoeApp' ng-controller='ShoeController'>
+
+<body ng-app="ShoeApp" ng-controller="ShoeController as vm">
     <h1>Shoe Store</h1>
-    
+    <table>
+        <thead>
+            <tr>
+                <th>Shoe name</th>
+                <th>Cost</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="shoe in vm.shoes.list">
+                <td>{{shoe.name}}</td>
+                <td>{{shoe.cost}}</td>
+            </tr>
+        </tbody>
+    </table>
+
 </body>
+
 </html>
